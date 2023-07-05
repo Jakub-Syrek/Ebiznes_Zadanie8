@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 function Platnosci() {
-  const [paymentData, setPaymentData] = useState({ name: "", amount: "" });
+  const { totalAmount } = useParams();
+  const [paymentData, setPaymentData] = useState({ name: "", amount: totalAmount });
 
   const handleInputChange = (event) => {
     setPaymentData({ ...paymentData, [event.target.name]: event.target.value });
@@ -10,7 +12,8 @@ function Platnosci() {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    axios.post('http://localhost:8080/api/payment', paymentData)
+    axios
+      .post("http://localhost:8080/api/payment", paymentData)
       .then((response) => {
         console.log(response.data);
       })
@@ -28,8 +31,13 @@ function Platnosci() {
           <input type="text" name="name" onChange={handleInputChange} />
         </label>
         <label>
-          Kwota do zapłaty:
-          <input type="text" name="amount" onChange={handleInputChange} />
+          Kwota do zapłaty: {totalAmount} zł
+          <input
+            type="hidden"
+            name="amount"
+            value={totalAmount}
+            onChange={handleInputChange}
+          />
         </label>
         <input type="submit" value="Zapłać" />
       </form>

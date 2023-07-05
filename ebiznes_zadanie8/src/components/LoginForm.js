@@ -16,18 +16,19 @@ const LoginForm = () => {
     e.preventDefault();
 
     // Send login data to the backend server using fetch or axios
-    fetch("/login", {
+    fetch("http://localhost:8080/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ username, password }),
     })
-      .then((response) => response.json())
-      .then((data) => {
-        // Handle the response from the server
-        // Perform necessary actions, such as storing tokens or displaying error messages
-        console.log(data);
+      .then((response) => {
+        if (response.ok) {
+          console.log("Login successful");
+        } else {
+          console.error("Login failed");
+        }
       })
       .catch((error) => {
         console.error("Error:", error);

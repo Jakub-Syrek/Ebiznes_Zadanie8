@@ -98,6 +98,7 @@ func handleRegistration(w http.ResponseWriter, r *http.Request) {
 
 		w.WriteHeader(http.StatusCreated)
 		fmt.Fprintf(w, "Registration successful")
+		
 	default:
 		http.Error(w, "Invalid request method", http.StatusMethodNotAllowed)
 	}
