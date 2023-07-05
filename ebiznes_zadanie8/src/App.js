@@ -4,6 +4,8 @@ import { Helmet } from "react-helmet"; // Importujemy komponent Helmet
 import Produkty from "./components/Produkty";
 import Koszyk from "./components/Koszyk";
 import Platnosci from "./components/Platnosci";
+import LoginForm from "./components/LoginForm";
+import RegistrationForm from "./components/RegistrationForm";
 
 function Home() {
   return (
@@ -48,6 +50,12 @@ function App() {
             <li>
               <Link to="/platnosci">Płatności</Link>
             </li>
+            <li>
+              <Link to="/login">Zaloguj</Link>
+            </li>
+            <li>
+              <Link to="/register">Zarejestruj</Link>
+            </li>
           </ul>
         </nav>
 
@@ -56,6 +64,8 @@ function App() {
           <Route path="/produkty" element={<Produkty addToCart={addToCart} />} />
           <Route path="/koszyk" element={<Koszyk cart={cart} removeFromCart={removeFromCart} />} />
           <Route path="/platnosci" element={<Platnosci />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/register" element={<RegistrationForm />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "react-oauth2-login": "^1.0.3"
+  }
+}
