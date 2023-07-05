@@ -16,7 +16,7 @@ const RegistrationForm = () => {
     e.preventDefault();
 
     // Send registration data to the backend server using fetch or axios
-    fetch("/register", {
+    fetch("http://localhost:8080/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
